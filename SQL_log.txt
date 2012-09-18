@@ -1,0 +1,41 @@
+ALTER TABLE tb1C CHANGE umare seinen DATE;
+
+ALTER TABLE tb1C MODIFY umare DATETIME FIRST;
+
+ALTER TABLE tb1E ADD umare DATETIME AFTER bang;
+
+ALTER TABLE tb1D ADD umare DATETIME FIRST;
+
+INSERT INTO tb1C VALUES ('N111', '松田', 33, '1980-11-10');
+
+ALTER TABLE tb1C ADD umare DATETIME;
+
+ALTER TABLE tb1C MODIFY nama VARCHA(100);
+
+prompt \d:\h>
+
+INSERT INTO hizu_ziko VALUES ('2013-11-17 20:35:15');
+
+CREATE TABLE hizu_ziko (hizu DATETIME);
+
+CREATE TABLE hizuke (a DATE);
+
+CREATE TABLE tb1A SELECT * FROM Stb1;
+
+SELECT 'test';
+
+SELECT * FROM tb1;
+
+INSERT INTO tb1 (bang, nama, tosi) VALUES ('A105', '西沢', 35 );
+
+INSERT INTO tb1 (tosi, nama, bang) VALUES (23, '渡辺', 'A104');
+
+INSERT INTO tb1 VALUES('A101', '佐藤', 40);
+
+CREATE TABLE tb1(
+bang VARCHAR(10),
+nama VARCHAR(10),
+tosi INT
+);
+
+CREATE DATABASE db1;
