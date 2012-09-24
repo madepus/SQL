@@ -1,15 +1,3 @@
-SELECT bang, uria,
-CASE
-    WHEN uria >= 100 THEN '多い'
-    WHEN uria >= 50 THEN '中くらい'
-    ELSE '少ない'
-END AS 評価
-FROM tb;
-
-SELECT * FROM tb WHERE (uria >= 200 or bang LIKE '%1') AND tuki = 4;
-
-SELECT * FROM tb WHERE bang LIKE '%1' AND tuki = 4 or uria >= 200;
-
 SELECT * FROM tb WHERE uria < 50 OR uria > 200;
 
 SELECT * FROM tb WHERE bang LIKE '%1' AND tuki = 4;
