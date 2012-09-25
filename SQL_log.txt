@@ -1,3 +1,9 @@
+SELECT uria FROM tb ORDER BY uria DESC LIMIT 2 OFFSET 3;
+
+SELECT uria FROM tb ORDER BY uria DESC LIMIT 5;
+
+SELECT uria FROM tb ORDER BY uria ASC;
+
 SELECT bang, uria,
 CASE
     WHEN uria >= 100 THEN '多い'
