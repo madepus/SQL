@@ -1,3 +1,11 @@
+SELECT bang, AVG(uria) FROM tb GROUP BY bang;
+
+SELECT bang, SUM(uria) AS 合計 FROM tb GRO UP BY bang;
+
+SELECT bang, COUNT(*) AS 件数 FROM tb GROUP BY bang;
+
+SELECT COUNT(*) FROM tb GROUP BY bang;
+
 SELECT uria FROM tb ORDER BY uria DESC LIMIT 2 OFFSET 3;
 
 SELECT uria FROM tb ORDER BY uria DESC LIMIT 5;
