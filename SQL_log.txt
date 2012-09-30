@@ -1,3 +1,17 @@
+SELECT *, AVG(uria) AS avg FROM tb WHERE uria >= 50 GROUP BY bang HAVING avg >= 120 ORDER BY avg DESC;
+
+SELECT bang, AVG(uria) FROM tb GROUP BY bang ORDER BY AVG(uria) DESC;
+
+SELECT bang, AVG(uria) FROM tb WHERE uria >= 50 GROUP BY bang;
+
+SELECT bang, SUM(uria) FROM tb GROUP BY bang HAVING SUM(uria) >= 200;
+
+SELECT CONCAT('合計は', SUM(uria), '円です') AS 売上 FROM tb;
+
+SELECT CONCAT(bang, name, 'さん') FROM tb1;
+
+SELECT SUM(uria) AS 売上 FROM tb;
+
 SELECT bang, AVG(uria) FROM tb 
 WHERE uria >= 50 GROUP BY bang ORDER BY AVG(uria) DESC;
 
