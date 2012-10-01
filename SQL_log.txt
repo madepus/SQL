@@ -1,4 +1,138 @@
-SELECT *, AVG(uria) AS avg FROM tb WHERE uria >= 50 GROUP BY bang HAVING avg >= 120 ORDER BY avg DESC;
+SELECT bang, AVG(uria) FROM tb 
+WHERE uria >= 50 GROUP BY bang ORDER BY AVG(uria) DESC;
+
+DROP VIEW IF EXISTS v1;
+
+ALTER VIEW v1 AS SELECT nama,tosi FROM tb1;
+
+CREATE OR REPLACE VIEW v1 AS SELECT NOW();
+
+CREATE VIEW v4 AS SELECT bang,uria FROM tb WHERE uria>100 WITH CHECK OPTION;
+
+INSERT INTO v3 VALUES('意地悪',50);
+
+CREATE VIEW v3 AS SELECT bang,uria FROM tb WHERE uria>=100;
+
+INSERT INTO v1 VALUES('アルバイト・石田',18);
+
+UPDATE tb SET uria=777 WHERE uria=54;
+
+CREATE VIEW v2 AS
+SELECT tb.bang,tb1L.nama,tb.uria FROM tb
+JOIN tb1L USING(bang) WHERE tb.uria>=100;
+
+UPDATE v1 SET nama='主任・佐藤' WHERE nama='佐藤';
+
+CREATE VIEW v1 AS SELECT nama, tosi FROM tb1L;
+
+SELECT * FROM tb WHERE EXISTS(SELECT * FROM tb1 WHERE tb.bang=tb1.bang);
+
+SELECT a.bang, a.uria, COUNT(*) AS 順位 
+    FROM tb AS a 
+JOIN tb AS b
+    WHERE a.uria <= b.uria 
+GROUP BY a.uria
+    ORDER BY 順位 ASC;
+
+INSERT INTO tb_zyun
+    (bang, uria, tuki)
+(SELECT
+    bang, uria, tuki
+FROM tb
+    ORDER BY uria DESC);
+
+ALTER TABLE tb_zyun ADD zyun INT AUTO_INCREMENT PRIMARY KEY;
+
+CREATE TABLE tb_zyun LIKE tb;
+
+SELECT * FROM tb1 WHERE NOT EXISTS (SELECT * FROM tb WHERE tb.bang=tb1.bang);
+
+SELECT * FROM tb1 WHERE EXISTS (SELECT * FROM tb WHERE tb.bang=tb1.bang);
+
+SELECT * FROM tb1 WHERE bang IN (SELECT bang FROM tb WHERE uria >= 200);
+
+SELECT * FROM tb1 WHERE tosi >= (SELECT AVG(tosi) FROM tb1);
+
+SELECT * FROM tb WHERE uria IN (SELECT MAX(uria) FROM tb);
+
+SELECT a.nama, a.tosi, COUNT(*) FROM tb1 AS a JOIN tb1 AS b
+WHERE a.tosi <= b.tosi GROUP BY a.bang;
+
+SELECT * FROM tb1 AS a JOIN tb1 AS b;
+
+SELECT tb.bang, tb1.mana FROM tb RIGHT JOIN tb1 USING(bang);
+
+SELECT tb.bang, tb1.nama FROM tb LEFT JOIN tb1 USING(bang);
+
+SELECT x.bang, y.nama, x.uria FROM tb as x JOIN tb1 as y ON x.bang = y.bang;
+
+SELECT tb.bang, tb.uria, tb1.nama, tb3.ken FROM tb 
+JOIN tb1 USING(bang) JOIN tb3 USING(bang);
+
+SELECT tb.bang AS 社員番号, tb1.nama AS 氏名, tb.uria AS 売上 FROM tb
+JOIN tb1 USING(bang) WHERE tb.uria >= 100;
+
+SELECT tb.bang, tb1.nama, tb.uria FROM tb JOIN tb1 USING(bang);
+
+SELECT x.bang, y.nama, x.uria FROM tb as X JOIN  tb1 as y ON x.bang = y.bang;
+
+SELECT tb.bang, tb1.nama, tb.uria FROM tb JOIN tb1 ON tb.bang = tb1.bang;
+
+SELECT * FROM tb INNER JOIN tb1 ON tb.bang = tb1.bang;
+
+SELECT * FROM tb JOIN tb1 ON tb.bang = tb1.bang;
+
+(SELECT bang FROM tb WHERE uria >= 200)
+UNION ALL
+(SELECT bang FROm tb1 WHERE tosi >= 35);
+
+(SELECT bang FROM tb WHERE uria >= 200)
+UNION
+(SELECT bang FROm tb1 WHERE tosi >= 35);
+
+SELECT * FROM tb WHERE bang IN('A102', 'A103');
+
+SELECT * FROM tb WHERE bang NOT IN('A101');
+
+(SELECT * FROM tb1) UNION (SELECT * FROM tb2);
+
+INSERT INTO tb3(bang, ken) VALUES ('','');
+
+INSERT INTO tb2 (bang, nama, tosi) VALUES ('','',);
+
+CREATE TABLE tb3(
+bang VARCHAR(10),
+ken VARCHAR(10)
+);
+
+CREATE TABLE tb2(
+bang VARCHAR(10),
+nama VARCHAR(10),
+tosi INT
+);
+
+CREATE TABLE new_zaiko SELECT * FROM zaiko WHERE c > (NOW() - INTERVAL 5 YEAR);
+
+DELETE FROM tb_copy ORDER BY uria DESC LIMIT 4;
+
+DELETE FROM tb1K WHERE tosi < 30;
+
+CREATE TABLE tb_2to5 SELECT * FROM tb ORDER BY uria DESC LIMIT 4 OFFSET 1;
+
+CREATE TABLE tb_A101 SELECT * FROM tb WHERE bang LIKE 'A101';
+
+ALTER TABLE tb DROP bikou;
+
+UPDATE tb SET bikou = 'ガンバレ' ORDER BY uria ASC LIMIT 3;
+
+UPDATE tb SET bikou = '優秀' WHERE uria >= 100;
+
+UPDATE tb SET bikou = '特記なし';
+
+ALTER TABLE tb ADD bikou VARCHAR(100);
+
+SELECT *, AVG(uria) AS avg FROM tb WHERE uria >= 50 
+GROUP BY bang HAVING avg >= 120 ORDER BY avg DESC;
 
 SELECT bang, AVG(uria) FROM tb GROUP BY bang ORDER BY AVG(uria) DESC;
 
